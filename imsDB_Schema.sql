@@ -1,3 +1,8 @@
+-- DROP SCHEMA ims;
+
+CREATE SCHEMA ims AUTHORIZATION postgres;
+
+
 CREATE TABLE ims.product (
 	id serial NOT NULL,
 	title varchar(40) NOT NULL,
