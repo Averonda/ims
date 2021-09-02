@@ -37,7 +37,7 @@ public class ProductStockModel {
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_stock_id_seq", allocationSize = 1)
 	private int id;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "product_stock_fk", nullable = false)
+	@JoinColumn(name = "product_id", nullable = false)
 	private ProductModel productId;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "transaction_date")

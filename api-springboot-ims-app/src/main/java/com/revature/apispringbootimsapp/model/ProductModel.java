@@ -14,17 +14,20 @@ import javax.persistence.Table;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "product", schema = "ims")
 @AllArgsConstructor
+@Getter
+@Setter
 public class ProductModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_id_seq", allocationSize = 1)
-	@OneToMany (mappedBy = "productId", fetch = FetchType.LAZY)
-	private Set<ProductStockModel> id;
+	private int id;
 	@Column
 	private String title;
 	@Column
@@ -35,20 +38,15 @@ public class ProductModel {
 	private int min;
 	@Column
 	private int boh;
+	@OneToMany (mappedBy = "productId", fetch = FetchType.LAZY)
+	private Set<ProductStockModel> productStocks;
 
 	public ProductModel() {
 		super();
 	}
 	
 
-	public Set<ProductStockModel> getId() {
-		return id;
-	}
-
-	public void setId(Set<ProductStockModel> id) {
-		this.id = id;
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
