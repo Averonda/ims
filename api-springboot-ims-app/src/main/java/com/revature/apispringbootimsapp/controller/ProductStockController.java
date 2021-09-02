@@ -35,14 +35,18 @@ import lombok.extern.java.Log;
 @RequestMapping(path = "/productstock")
 public class ProductStockController {
 
-	private static final Logger log = LoggerFactory.getLogger(ProductStockController.class);
 	
 	@Autowired
 	private ProductStockManager manager;
 	
-	@GetMapping(path = "/invoices", produces = "application/json")
+	@GetMapping(produces = "application/json")
 	public List<ProductStockModel> getAllInvoices(){
 		return manager.findAll();
+	}
+	
+	@PostMapping(path = "/create/{id}", consumes = "application/json", produces = "application/json")
+	public ProductStockModel create(@Valid @RequestBody ProductStockModel p) {
+		return manager.create(p);
 	}
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -54,9 +58,6 @@ public class ProductStockController {
 			String errorMessage = error.getDefaultMessage();
 			errors.put(fieldName, errorMessage);
 		});
-		for(Map.Entry<String, String> error : errors.entrySet()) {
-			log.info(error.getKey() + " " + error.getValue());
-		}
 		return errors;
 	}
 
@@ -65,9 +66,6 @@ public class ProductStockController {
 	public Map<String, String> handleConstraintViolationExceptions(ConstraintViolationException ex) {
 		Map<String, String> errors = new HashMap<>();
 		errors.put("message", ex.getCause().getLocalizedMessage());
-		for(Map.Entry<String, String> error : errors.entrySet()) {
-			log.info(error.getKey() + " " + error.getValue());
-		}
 		return errors;
 	}
 	

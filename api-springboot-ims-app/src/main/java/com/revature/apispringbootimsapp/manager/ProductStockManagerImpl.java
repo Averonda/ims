@@ -25,7 +25,6 @@ import com.revature.apispringbootimsapp.model.ProductStockModel;
 @Transactional
 public class ProductStockManagerImpl implements ProductStockManager {
 
-	private static final Logger log = LoggerFactory.getLogger(ProductStockManagerImpl.class);
 	
 	@Autowired
 	private ProductStockDAO dao;
@@ -33,7 +32,6 @@ public class ProductStockManagerImpl implements ProductStockManager {
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.NEVER)
 	public List<ProductStockModel> findAll() {
-		log.info("findAll called");
 		return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
 	}
 
