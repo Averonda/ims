@@ -1,5 +1,7 @@
 package com.revature.apispringbootimsapp.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
+
 
 
 import lombok.AllArgsConstructor;
@@ -20,63 +24,35 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "product", schema = "ims")
+@Table(name = "product")
 @AllArgsConstructor
 //@Getter
 //@Setter
 public class ProductModel {
-	
-	// Add ID
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_id_seq", allocationSize = 1)
 	private int id;
-
-	// Add Product Title
-	@Column(name="title")
+	@Column
 	private String title;
-	
-	// Add Product Category
-	@Column(name="category")
+	@Column
 	private String category;
-	
-	// Add Product Manufacturer
-	@Column(name="manufacturer")
+	@Column
 	private String manufacturer;
-	
-	// Add Minimum Limit
-	@Column(name="min_limit")
-	private int minimumLimit;
-	
-	// Add Balance-on-Hand
-	@Column(name="boh")
+	@Column (name = "minumum_limit")
+	private int min;
+	@Column
 	private int boh;
+	@OneToMany (mappedBy = "productId", fetch = FetchType.LAZY)
+	private Set<ProductStockModel> productStocks;
 
-	// Generate default constructor
 	public ProductModel() {
 		super();
 	}
-
-	// Generate constructor (all fields)
-	public ProductModel(int id, String title, String category, String manufacturer, int minimumLimit, int boh) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.category = category;
-		this.manufacturer = manufacturer;
-		this.minimumLimit = minimumLimit;
-		this.boh = boh;
-	}
 	
-	// Generate getters and setters
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -84,7 +60,7 @@ public class ProductModel {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getCategory() {
 		return category;
 	}
@@ -101,12 +77,12 @@ public class ProductModel {
 		this.manufacturer = manufacturer;
 	}
 
-	public int getMinimumLimit() {
-		return minimumLimit;
+	public int getMin() {
+		return min;
 	}
 
-	public void setMinimumLimit(int minimumLimit) {
-		this.minimumLimit = minimumLimit;
+	public void setMin(int min) {
+		this.min = min;
 	}
 
 	public int getBoh() {
@@ -119,10 +95,7 @@ public class ProductModel {
 
 	@Override
 	public String toString() {
-		return "ProductModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer="
-				+ manufacturer + ", minimumLimit=" + minimumLimit + ", boh=" + boh + "]";
+		return "UserModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer=" + manufacturer
+				+ ", min=" + min + ", boh=" + boh + "]";
 	}
-	
-	
-	
 }
