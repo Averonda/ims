@@ -19,8 +19,6 @@ import lombok.AllArgsConstructor;
 @Entity
 @Table(name = "product")
 @AllArgsConstructor
-//@Getter
-//@Setter
 public class ProductModel {
 
 	@Id
