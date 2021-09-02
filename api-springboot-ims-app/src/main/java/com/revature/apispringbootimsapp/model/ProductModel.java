@@ -101,14 +101,5 @@ public class ProductModel {
 	public void setBoh(int boh) {
 		this.boh = boh;
 	}
-
-	@Override
-	public String toString() {
-		return "ProductModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer="
-				+ manufacturer + ", minimumLimit=" + minimumLimit + ", boh=" + boh + "]";
-	}	
-	
-	
-
 	
 }
