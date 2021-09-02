@@ -1,15 +1,15 @@
 package com.revature.apispringbootimsapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
-import com.revature.apispringbootimsapp.ApiSpringbootImsAppApplication;
+//import com.revature.apispringbootimsapp.ApiSpringbootImsAppApplication;
 
-import lombok.Getter;
+//import lombok.Getter;
 
 
-@Entity
-@Table(name = "user" )
+//@Entity
+//@Table(name = "user" )
 public class UserModel {
 
 	

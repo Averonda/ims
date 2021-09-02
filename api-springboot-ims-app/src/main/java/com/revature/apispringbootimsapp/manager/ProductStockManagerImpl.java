@@ -31,27 +31,22 @@ public class ProductStockManagerImpl implements ProductStockManager {
 	private ProductStockDAO dao;
 	
 	@Override
+	@Transactional(readOnly = true, propagation = Propagation.NEVER)
 	public List<ProductStockModel> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("findAll called");
+		return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
 	}
 
 	@Override
-	public List<ProductStockModel> findAll(int startIndex, int count) {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductStockModel findById(int id) {
+		return dao.findById(Integer.valueOf(id)).get();
 	}
 
 	@Override
-	public List<ProductStockModel> findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	@Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = {
+							   ConstraintViolationException.class }, propagation = Propagation.REQUIRES_NEW)  
 	public ProductStockModel create(ProductStockModel p) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.save(p);
 	}
 
 }

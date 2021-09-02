@@ -8,9 +8,7 @@ public interface ProductStockManager {
 
 	List<ProductStockModel> findAll();
 	
-	List<ProductStockModel> findAll(int startIndex, int count);
-	
-	List<ProductStockModel> findById(int id);
+	ProductStockModel findById(int id);
 	
 	ProductStockModel create(ProductStockModel p);
 	

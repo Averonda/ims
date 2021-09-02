@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Getter
@@ -41,6 +40,7 @@ public class ProductStockModel {
 	@Column
 	private String transaction_type;
 
+	public ProductStockModel() {}
 
 	public ProductStockModel(int product_id, Date transaction_date, String vendor, String batch_code,
 			String invoice_number, int quantity, String transaction_type) {
