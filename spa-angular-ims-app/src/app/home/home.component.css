@@ -1,0 +1,24 @@
+
+.home{
+    font-size: 50px;
+}
+
+.linkbox{
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 50px;
+    padding: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.linkbox:hover{
+    background-repeat: no-repeat;
+    background-image: linear-gradient(gray, lightgray);
+}
+
+a{
+    color: black;
+}
