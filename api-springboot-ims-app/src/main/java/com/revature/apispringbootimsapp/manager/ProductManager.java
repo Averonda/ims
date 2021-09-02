@@ -8,12 +8,11 @@ public interface ProductManager {
 	
 	List<ProductModel> findAll();
 	
-	List<ProductModel> findAll(int startIndex, int count);
-	
-	List<ProductModel> findByUserId(int id);
+//	List<ProductModel> findByUserId(int id);
 	
 	ProductModel findById(int id);
 	
 	ProductModel create(ProductModel p);
-
+	
+	ProductModel delete(ProductModel p);
 }

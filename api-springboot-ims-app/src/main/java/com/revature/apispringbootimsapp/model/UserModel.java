@@ -8,8 +8,8 @@ import com.revature.apispringbootimsapp.ApiSpringbootImsAppApplication;
 import lombok.Getter;
 
 
-@Entity
-@Table(name = "user")
+//@Entity
+//@Table(name = "user")
 public class UserModel {
 
 	

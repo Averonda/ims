@@ -2,21 +2,36 @@ package com.revature.apispringbootimsapp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-// Question: Why not include "implements Serializable" in class declaration?
-// public class ProductModel implements Serializable { 
-@Entity(name="product")
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Table(name = "product", schema = "ims")
+@AllArgsConstructor
+//@Getter
+//@Setter
 public class ProductModel {
+	
 	// Add ID
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_id_seq", allocationSize = 1)
 	private int id;
-	
+
 	// Add Product Title
 	@Column(name="title")
 	private String title;
@@ -30,7 +45,7 @@ public class ProductModel {
 	private String manufacturer;
 	
 	// Add Minimum Limit
-	@Column(name="minimum_limit")
+	@Column(name="min_limit")
 	private int minimumLimit;
 	
 	// Add Balance-on-Hand
@@ -101,5 +116,13 @@ public class ProductModel {
 	public void setBoh(int boh) {
 		this.boh = boh;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer="
+				+ manufacturer + ", minimumLimit=" + minimumLimit + ", boh=" + boh + "]";
+	}
+	
+	
 	
 }
