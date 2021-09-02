@@ -1,6 +1,7 @@
 package com.revature.apispringbootimsapp.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,8 +11,8 @@ import com.revature.apispringbootimsapp.model.ProductStockModel;
 
 public interface ProductStockDAO extends JpaRepository<ProductStockModel, Integer> {
 	
-	@Query(value = "select p from product_stock p where p.id = :id")
-	public ProductStockModel findById(@Param("id") int id);
+	@Query(value = "select p from ProductStockModel p where p.id = :productId")
+	public ProductStockModel findById(@Param("productId") int id);
 
 	public List<ProductStockModel> findAll();
 	
