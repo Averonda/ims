@@ -9,4 +9,6 @@ import com.revature.apispringbootimsapp.model.ProductStockModel;
 public interface ProductStockDAO extends JpaRepository<ProductStockModel, Integer>{
 
 	public List<ProductStockModel> findAll();
+	
+	
 }

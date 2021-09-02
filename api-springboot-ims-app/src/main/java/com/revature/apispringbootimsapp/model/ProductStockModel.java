@@ -23,20 +23,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
 @Entity
-@Table( name = "product_stock", schema = "ims")
+@Table( name = "product_stock")
 public class ProductStockModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator" )
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_stock_id_seq", allocationSize = 1)
 	private int id;
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "product_id", nullable = false)
 	private ProductModel productId;
 	@Temporal(TemporalType.DATE)
@@ -52,5 +52,113 @@ public class ProductStockModel {
 	private int quantity;
 	@Column(name = "transaction_type")
 	private String transactionType;
+	
+	
+	public ProductStockModel() {
+		super();
+	}
+
+
+	public ProductStockModel(int id, ProductModel productId, Date transactionDate, String vendor, String batchCode,
+			String invoiceNumber, int quantity, String transactionType) {
+		super();
+		this.id = id;
+		this.productId = productId;
+		this.transactionDate = transactionDate;
+		this.vendor = vendor;
+		this.batchCode = batchCode;
+		this.invoiceNumber = invoiceNumber;
+		this.quantity = quantity;
+		this.transactionType = transactionType;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public ProductModel getProductId() {
+		return productId;
+	}
+
+
+	public void setProductId(ProductModel productId) {
+		this.productId = productId;
+	}
+
+
+	public Date getTransactionDate() {
+		return transactionDate;
+	}
+
+
+	public void setTransactionDate(Date transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
+
+	public String getVendor() {
+		return vendor;
+	}
+
+
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
+
+
+	public String getBatchCode() {
+		return batchCode;
+	}
+
+
+	public void setBatchCode(String batchCode) {
+		this.batchCode = batchCode;
+	}
+
+
+	public String getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
+	}
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+
+	@Override
+	public String toString() {
+		return "ProductStockModel [id=" + id + ", productId=" + productId + ", transactionDate=" + transactionDate
+				+ ", vendor=" + vendor + ", batchCode=" + batchCode + ", invoiceNumber=" + invoiceNumber + ", quantity="
+				+ quantity + ", transactionType=" + transactionType + "]";
+	}
+	
 	
 }

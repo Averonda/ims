@@ -34,7 +34,7 @@ public class ProductModel {
 	private String category;
 	@Column
 	private String manufacturer;
-	@Column
+	@Column (name = "minumum_limit")
 	private int min;
 	@Column
 	private int boh;

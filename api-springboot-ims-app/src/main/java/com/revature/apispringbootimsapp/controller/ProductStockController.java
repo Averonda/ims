@@ -17,7 +17,7 @@ public class ProductStockController {
 	@Autowired
 	private ProductStockManager manager;
 
-	@GetMapping( path = "/all", produces = "application/json")
+	@GetMapping( produces = "application/json")
 	public List<ProductStockModel> getAllProductStock(){
 		return manager.findAll();
 	}
