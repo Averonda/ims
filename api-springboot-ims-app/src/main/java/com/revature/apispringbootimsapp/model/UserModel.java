@@ -1,68 +1,36 @@
 package com.revature.apispringbootimsapp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.revature.apispringbootimsapp.ApiSpringbootImsAppApplication;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
-@Table(name = user)
+@Table(name = "user", schema = "ims")
 public class UserModel {
 
-	
-	private int id;
-	private String title;
-	private String category;
-	private String manufacturer;
-	private int min;
-	private int boh;
-	
-	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getManufacturer() {
-		return manufacturer;
-	}
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-	public int getMin() {
-		return min;
-	}
-	public void setMin(int min) {
-		this.min = min;
-	}
-	public int getBoh() {
-		return boh;
-	}
-	public void setBoh(int boh) {
-		this.boh = boh;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "UserModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer=" + manufacturer
-				+ ", min=" + min + ", boh=" + boh + "]";
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator" )
+	@SequenceGenerator(name = "id_generator", sequenceName = "user_uid_seq", allocationSize = 1)
+	private int uid;
+	@Column
+	private String username;
+	@Column
+	private String password;
+	@Column(name = "permission_level")
+	private String permissionLevel;
 }
