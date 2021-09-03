@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,11 +39,13 @@ public class ProductStockController {
 	@Autowired
 	private ProductManager productManager;
 	
-	@GetMapping(produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path="/invoices", produces = "application/json", consumes = "application/json")
 	public List<ProductStockModel> getAllInvoices(){
 		return productStockManager.findAll();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public ProductStockModel create(@Valid @RequestBody ProductStockModel p) {
 		ProductModel productModel = new ProductModel();

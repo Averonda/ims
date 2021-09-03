@@ -17,6 +17,7 @@
 .linkbox:hover{
     background-repeat: no-repeat;
     background-image: linear-gradient(gray, lightgray);
+    cursor: pointer;
 }
 
 a{

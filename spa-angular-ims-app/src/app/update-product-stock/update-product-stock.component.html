@@ -5,14 +5,45 @@
 
     <div class="row">
         <table>
-            <th>ID</th>
-            <th>Product ID</th>
-            <th>Transaction Date</th>
-            <th>Vendor</th>
-            <th>Batch Code</th>
-            <th>Invoice Number</th>
-            <th>Quantity</th>
-            <th>Transaction Type</th>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Transaction Date</th>
+                <th>Vendor</th>
+                <th>Batch Code</th>
+                <th>Invoice Number</th>
+                <th>Quantity</th>
+                <th>Transaction Type</th>
+            </tr>
+            <tr>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.id}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.productId.title}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.transactionDate| date }}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.vendor}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.batchCode}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.invoiceNumber}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.quantity}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.transactionType}}</div>
+                </td>
+                
+            </tr>
+
+
         </table>
     </div>
     <div>
