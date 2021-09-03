@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.validation.Valid;
+
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,12 @@ public class ProductStockManagerImpl implements ProductStockManager {
 							   ConstraintViolationException.class }, propagation = Propagation.REQUIRES_NEW)  
 	public ProductStockModel create(ProductStockModel p) {
 		return dao.save(p);
+	}
+
+	@Override
+	public ProductStockModel update(@Valid ProductStockModel p) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

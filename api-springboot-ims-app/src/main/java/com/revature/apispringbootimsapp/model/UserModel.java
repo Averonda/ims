@@ -20,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "user", schema = "ims")
+@Table(name = "user")
 public class UserModel {
 
 	@Id

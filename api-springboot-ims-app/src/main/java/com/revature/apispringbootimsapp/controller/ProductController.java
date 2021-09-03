@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,15 @@ public class ProductController {
 		return manager.findAll();
 	}
 	
+	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
+	public ProductModel addProductStock(ProductModel newProduct) {
+		return manager.create(newProduct);
+	}
+	
+	@GetMapping(path = "/title", consumes = "application/json", produces = "application/json")
+	public ProductModel findByTitle(String title) {
+		return manager.findByTitle(title);
+	}
 //	// Finds products by user_id
 //	@GetMapping(path = "/{id}", produces = "application/json")
 //	public List<ProductModel> getProduct(@PathVariable int id) {

@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.apispringbootimsapp.manager.ProductManager;
 import com.revature.apispringbootimsapp.manager.ProductStockManager;
+import com.revature.apispringbootimsapp.model.ProductModel;
 import com.revature.apispringbootimsapp.model.ProductStockModel;
 
 import lombok.extern.java.Log;
@@ -31,16 +33,28 @@ public class ProductStockController {
 
 	
 	@Autowired
-	private ProductStockManager manager;
+	private ProductStockManager productStockManager;
+	
+	@Autowired
+	private ProductManager productManager;
 	
 	@GetMapping(produces = "application/json")
 	public List<ProductStockModel> getAllInvoices(){
-		return manager.findAll();
+		return productStockManager.findAll();
 	}
 	
-	@PostMapping(path = "/create/{id}", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public ProductStockModel create(@Valid @RequestBody ProductStockModel p) {
-		return manager.create(p);
+		ProductModel productModel = new ProductModel();
+		productModel = productManager.findByTitle(p.getProductId().getTitle());
+//		System.out.println(productModel.toString());
+		if(productModel == null) {
+			productModel = productManager.create(p.getProductId());
+			p.setProductId(productModel);
+		}
+		p.setProductId(productModel);
+		return productStockManager.create(p);
+		
 	}
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

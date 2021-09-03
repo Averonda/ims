@@ -1,7 +1,9 @@
 package com.revature.apispringbootimsapp.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,15 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+
 import javax.persistence.OneToMany;
-
-
-
-import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "product")
-@AllArgsConstructor
 public class ProductModel {
 
 	@Id
@@ -35,15 +34,38 @@ public class ProductModel {
 	private int min;
 	@Column
 	private int boh;
-	@OneToMany (mappedBy = "productId", fetch = FetchType.LAZY)
-	private Set<ProductStockModel> productStocks;
+	@OneToMany (mappedBy = "productId", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<ProductStockModel> productStocks = new HashSet<>();
+	
+	public void addProductStock(ProductStockModel productStockModel) {
+		productStockModel.setProductId(this);
+		productStocks.add(productStockModel);
+	}
 
 	public ProductModel() {
 		super();
 	}
 	
+	public ProductModel(int id, String title, String category, String manufacturer, int min, int boh,
+			Set<ProductStockModel> productStocks) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.manufacturer = manufacturer;
+		this.min = min;
+		this.boh = boh;
+		this.productStocks = productStocks;
+	}
 
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -86,7 +108,9 @@ public class ProductModel {
 
 	@Override
 	public String toString() {
-		return "UserModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer=" + manufacturer
-				+ ", min=" + min + ", boh=" + boh + "]";
+		return "ProductModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer="
+				+ manufacturer + ", min=" + min + ", boh=" + boh + ", productStocks=" + productStocks + "]";
 	}
+
+	
 }

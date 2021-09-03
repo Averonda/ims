@@ -16,14 +16,14 @@ import lombok.extern.java.Log;
 public class ProductManagerImpl implements ProductManager {
 	
 	@Autowired
-	private ProductDAO productDAO;
+	private ProductDAO dao;
 	
 	// Find all products in db
 	@Override
 	//@Transactional(readOnly = true, propagation = Propagation.NEVER)
 	public List<ProductModel> findAll() {
 		//return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
-		return productDAO.findAll();
+		return dao.findAll();
 	}
 	
 	// Find single product with id of id
@@ -33,13 +33,18 @@ public class ProductManagerImpl implements ProductManager {
 	}
 	
 	@Override
-	public ProductModel create(ProductModel user) {
-		return null;
+	public ProductModel create(ProductModel product) {
+		return dao.save(product);
 	}
 	
 	@Override
 	public ProductModel delete(ProductModel user) {
 		return null;
+	}
+
+	@Override
+	public ProductModel findByTitle(String title) {
+		return dao.findByTitle(title);
 	}	
 
 }

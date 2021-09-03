@@ -28,7 +28,7 @@ public class ProductStockModel {
 	private ProductModel productId;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "transaction_date")
-	private Date transactionDate;
+	private Date transactionDate = new Date();
 	@Column
 	private String vendor;
 	@Column(name = "batch_code")
@@ -135,6 +135,16 @@ public class ProductStockModel {
 
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
+	}
+	
+	public ProductStockModel(int id, String vendor, String batchCode,String invoiceNumber,
+			int quantity, String transactionType) {
+		this.batchCode = batchCode;
+		this.invoiceNumber = invoiceNumber;
+		this.productId.setId(id);
+		this.quantity = quantity;
+		this.transactionType = transactionType;
+		this.vendor = vendor;
 	}
 
 
