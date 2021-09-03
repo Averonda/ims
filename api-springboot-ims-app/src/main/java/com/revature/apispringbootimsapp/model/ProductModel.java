@@ -42,6 +42,8 @@ public class ProductModel {
 		super();
 	}
 	
+	
+	
 
 	
 	public String getTitle() {

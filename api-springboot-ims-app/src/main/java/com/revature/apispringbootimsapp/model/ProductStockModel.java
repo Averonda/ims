@@ -2,6 +2,7 @@ package com.revature.apispringbootimsapp.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,12 +24,12 @@ public class ProductStockModel {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator" )
 	@SequenceGenerator(name = "id_generator", sequenceName = "product_stock_id_seq", allocationSize = 1)
 	private int id;
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id", nullable = false)
 	private ProductModel productId;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "transaction_date")
-	private Date transactionDate;
+	private Date transactionDate = new Date();
 	@Column
 	private String vendor;
 	@Column(name = "batch_code")
@@ -58,7 +59,7 @@ public class ProductStockModel {
 		this.quantity = quantity;
 		this.transactionType = transactionType;
 	}
-
+	
 
 	public int getId() {
 		return id;
@@ -94,6 +95,7 @@ public class ProductStockModel {
 		return vendor;
 	}
 
+
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
 	}
@@ -122,6 +124,7 @@ public class ProductStockModel {
 	public int getQuantity() {
 		return quantity;
 	}
+
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
