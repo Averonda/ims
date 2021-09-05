@@ -1,17 +1,30 @@
 package com.revature.apispringbootimsapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.revature.apispringbootimsapp.ApiSpringbootImsAppApplication;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
-@Entity
-@Table(name = user)
+
+
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
+@Entity(name = "user")
 public class UserModel {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+	@SequenceGenerator(name = "id_generator", sequenceName = "user_id_seq", allocationSize = 1)
 	
 	private int id;
 	private String title;
@@ -60,9 +73,9 @@ public class UserModel {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "UserModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer=" + manufacturer
-				+ ", min=" + min + ", boh=" + boh + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "UserModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer=" + manufacturer
+//				+ ", min=" + min + ", boh=" + boh + "]";
+//	}
 }
