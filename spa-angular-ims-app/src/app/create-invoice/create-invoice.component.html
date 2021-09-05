@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row" >
+        <h1 style="text-align: center;">Create New Invoice</h1>
+    </div>
+
+    <div class="row">
+        <form class="invoiceForm" (ngSubmit)="onSubmit(invoiceForm)" #invoiceForm="ngForm">
+            <p>Product Id: <input name="productId" type="number" placeholder="0" ngModel></p>
+            <p>Vendor: <input name="vendor" type="vendor" placeholder="Vendor" ngModel></p>
+            <p>Batch Code: <input name="batchCode" type="text" placeholder="Batch Code" ngModel></p>
+            <p>Invoice Number: <input name="invoiceNum" type="text" placeholder="Invoice Number" ngModel></p>
+            <p>Quantity: <input name="Quantity" type="number" placeholder="0" ngModel></p>
+            <p>Transaction Type: <select name="transactionType" ngModel><option >IN</option><option >OUT</option></select></p>
+
+            <button class="formButton" type="submit">Submit</button>
+        </form>
+    </div>
+</div>

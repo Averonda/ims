@@ -1,0 +1,15 @@
+<h1>Create New Product</h1>
+
+<form class="newProductForm"  (ngSubmit)="onSubmit(newProductForm)" #newProductForm="ngForm">
+    <p>Enter Title <input class="txtBox" type="text" name="title" placeholder="Enter Title" ngModel></p>
+    <br><br>
+    <p>Enter Category <input class="txtBox" type="text" name="category" placeholder="Enter Category" ngModel></p>
+    <br><br>
+    <p>Enter Manufacturer <input class="txtBox" type="text" name="manufacturer" placeholder="Enter Manufacturer" ngModel></p>
+    <br><br>
+    <p>Enter Minimum Limit <input class="txtBox" type="email" name="minimum_limit" placeholder="Enter Minimum Limit" ngModel></p>
+    <br><br>
+    <p>Enter Balance on Hand <input class="txtBox" type="text" name="boh" placeholder="Enter Balance on Hand" ngModel></p>
+    <br><br>
+    <button class="submitButton" type="submit">Submit</button>
+</form>
