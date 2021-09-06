@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spa-angular-ims-app';
+
+  // Added to 4:14
+  constructor(private http: HttpClient) {
+    
+  }
 }

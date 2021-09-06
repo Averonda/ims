@@ -28,7 +28,7 @@ public class ProductStockModel {
 	private ProductModel productId;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "transaction_date")
-	private Date transactionDate;
+	private Date transactionDate = new Date();
 	@Column
 	private String vendor;
 	@Column(name = "batch_code")

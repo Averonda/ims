@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './update-product-stock.component.html',
   styleUrls: ['./update-product-stock.component.css']
 })
+
 export class UpdateProductStockComponent implements OnInit {
 
   constructor(private router:Router) { }

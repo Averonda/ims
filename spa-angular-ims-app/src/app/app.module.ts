@@ -21,16 +21,16 @@ const routes:Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CreateNewProductComponent
+    CreateNewProductComponent,
+    CreateInvoiceComponent,
+    HomeComponent,
+    UpdateProductStockComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HomeComponent,
-    UpdateProductStockComponent,
-    CreateInvoiceComponent,  
     RouterModule.forRoot(routes)
   ],
   providers: [],
