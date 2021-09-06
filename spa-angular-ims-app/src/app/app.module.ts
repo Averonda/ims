@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MatTableModule} from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,12 +14,16 @@ import { CreateNewProductComponent } from './create-new-product/create-new-produ
 import { HomeComponent } from './home/home.component';
 import { UpdateProductStockComponent } from './update-product-stock/update-product-stock.component';
 import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
+import { ProductTableComponent } from './product-table/product-table.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes:Routes = [
   {path:"createNewProduct", component:CreateNewProductComponent },
   {path: '', component: HomeComponent},
   {path: 'updateproductstock', component: UpdateProductStockComponent},
-  {path: 'createinvoice', component: CreateInvoiceComponent}
+  {path: 'createinvoice', component: CreateInvoiceComponent},
+  {path: 'productStock', component: ProductTableComponent}
 ]
 
 @NgModule({
@@ -24,7 +32,8 @@ const routes:Routes = [
     CreateNewProductComponent, 
     HomeComponent,
     UpdateProductStockComponent,
-    CreateInvoiceComponent 
+    CreateInvoiceComponent,
+    ProductTableComponent 
 
   ],
   imports: [
@@ -32,9 +41,15 @@ const routes:Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [ MatFormFieldModule, MatInputModule ]
 })
 export class AppModule { }
