@@ -7,6 +7,7 @@ import com.revature.apispringbootimsapp.model.ProductModel;
 public interface ProductManager {
 
 	List<ProductModel> findAll();
+	
 	ProductModel findById(int id);
 
 	ProductModel create(ProductModel p);

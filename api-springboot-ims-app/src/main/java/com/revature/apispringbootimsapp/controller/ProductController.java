@@ -14,6 +14,7 @@ import org.springframework.boot.context.config.ConfigDataResourceNotFoundExcepti
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductManager manager;
-	
-	@GetMapping(path = "/{id}", produces = "application/json")
-	public ProductModel temp(@PathVariable int id) {
-		return manager.tmp(id);
-	}
-	
-	
+
 	// Finds all entries in db
 	@GetMapping(path = "/all", produces = "application/json")
 	public List<ProductModel> getAllProducts() {
