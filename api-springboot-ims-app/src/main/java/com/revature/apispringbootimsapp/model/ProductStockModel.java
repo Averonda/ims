@@ -65,7 +65,6 @@ public class ProductStockModel {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -95,7 +94,6 @@ public class ProductStockModel {
 		return vendor;
 	}
 
-
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
 	}
@@ -124,7 +122,6 @@ public class ProductStockModel {
 	public int getQuantity() {
 		return quantity;
 	}
-
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;

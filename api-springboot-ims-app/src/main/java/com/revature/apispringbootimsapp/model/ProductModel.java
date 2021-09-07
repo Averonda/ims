@@ -14,6 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
+import javax.persistence.OneToMany;
+
+
+
 @Entity
 @Table(name = "product")
 public class ProductModel {
@@ -47,6 +52,11 @@ public class ProductModel {
 
 	public ProductModel() {
 		super();
+	}
+	
+	public ProductModel(String manufacturer) {
+		super();
+		this.manufacturer = manufacturer;
 	}
 	
 	public ProductModel(int id, String title, String category, String manufacturer, int min, int boh,
