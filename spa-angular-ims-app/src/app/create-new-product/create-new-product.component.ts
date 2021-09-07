@@ -23,7 +23,7 @@ export class CreateNewProductComponent implements OnInit {
     const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
 
     this.http.post(this.url, JSON.stringify({title:form.value.title,category:form.value.category,manufacturer:form.value.manufacturer, min:form.value.minimum_limit, boh:form.value.boh}), httpOptions
-    ).subscribe({next:(data:any)=>{console.log(data)
+    ).subscribe({next:(data:any)=>{
     }
     })
 

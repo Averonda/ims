@@ -3,47 +3,45 @@
         <h1 style="text-align: center;">Create New Invoice</h1>
     </div>
 
-    <div class="row">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Product ID</th>
-                <th>Transaction Date</th>
-                <th>Vendor</th>
-                <th>Batch Code</th>
-                <th>Invoice Number</th>
-                <th>Quantity</th>
-                <th>Transaction Type</th>
-            </tr>
-            <tr>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.id}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.productId.title}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.transactionDate| date }}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.vendor}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.batchCode}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.invoiceNumber}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.quantity}}</div>
-                </td>
-                <td>
-                    <div *ngFor="let invoice of invoices ">{{invoice.transactionType}}</div>
-                </td>
-                
-            </tr>
-        </table>
-    </div>
+    <table mat-table [dataSource]="dataSource" class="table">
+    
+    
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        
+      
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        
+    
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        </ng-container>
+        
+        
+        <ng-container matColumnDef="manufacturer">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Manufacturer </th>
+            <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="min">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Minimum </th>
+            <td mat-cell *matCellDef="let element"> {{element.min}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="boh">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> BOH </th>
+            <td mat-cell *matCellDef="let element"> {{element.boh}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
     <div class="row">
         <button style="display: block;" class="formButton" (click)="refreshTable()">Refresh Table</button>

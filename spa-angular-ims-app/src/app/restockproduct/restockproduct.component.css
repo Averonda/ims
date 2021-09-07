@@ -1,25 +1,32 @@
 table, th, td{
-    border-radius: 5px;
-    border: 1px solid black;
+    /* border-radius: 5px; */
+    /* border: 1px solid black; */
     padding: 2px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 10px;
     background-color: white;
+    text-align: center;
+    justify-content: center;
+    width: auto;
 }
 
 th{
     background-color: rgb(196, 196, 196);
+    font-size: large;
+    font-weight: bold;
+    width: 10%;
+    
+    
+    
 }
 
-.createNewInvoice{
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    border-radius: 5px;
-    padding: 5px;
-
+td{
+    border: 1px;
+    border-left: 10%;
+    border-right: 10%;
 }
+
 
 .createNewInvoice:hover{
     background-image: linear-gradient(gray, lightgray);

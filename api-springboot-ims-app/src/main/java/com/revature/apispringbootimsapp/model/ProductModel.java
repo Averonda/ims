@@ -33,7 +33,7 @@ public class ProductModel {
 	private String category;
 	@Column 
 	private String manufacturer;
-	@Column (name = "minimum_limit")
+	@Column (name = "minumum_limit")
 	private int min;
 	@Column
 	private int boh;

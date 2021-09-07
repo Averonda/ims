@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -11,45 +12,42 @@ import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http'
 })
 export class RestockproductComponent implements OnInit {
   [x: string]: any;
+  products : any = [];
+  displayedColumns: string[] = ['id', 'title', 'category', 'manufacturer', 'min', 'boh'];
+  dataSource :any;
 
-   public url='http://localhost:8080/products/productbalance';
-   products:any = [];
+  public url = 'http://localhost:8080/products/productbalance';
 
-  status:any;
-  constructor(private http:HttpClient, ) { }
+  status: any;
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-     this.fetch();
-     
+    this.fetch();
   }
- 
- 
 
-    fetch(){
-      this.http.get(this.url).subscribe(data=>{
-        this.products= data;
-        
-       
+  fetch() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
       })
+    }
 
-   }
-
-
-
-
-getStatus(){
-    
-   console.log(HttpHeaderResponse)
-
-}
-
-   
-  order(_data:any){
+    this.http.get(this.url, httpOptions).subscribe(data => {
+      this.products = data;
+      this.dataSource = new MatTableDataSource(this.products);
+    })
 
   }
 
-  downloadFile(_data:any){
+  submit(){
+    alert("Under Construction, Comming Soon!")
+  }
+  order(_data: any) {
 
-}
+  }
+
+  downloadFile(_data: any) {
+
+  }
 
 }

@@ -12,25 +12,25 @@
 
 <table mat-table [dataSource]="dataSource" class="table">
     
-    <!-- Position Column -->
+    
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;"> ID </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
     
-    <!-- Name Column -->
+  
     <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Title </th>
         <td mat-cell *matCellDef="let element"> {{element.title}} </td>
     </ng-container>
     
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Category </th>
         <td mat-cell *matCellDef="let element"> {{element.category}} </td>
     </ng-container>
     
-    <!-- Symbol Column -->
+    
     <ng-container matColumnDef="manufacturer">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Manufacturer </th>
         <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>

@@ -43,6 +43,7 @@ public class ProductController {
 	}
 
 	//
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/title", consumes = "application/json", produces = "application/json")
 	public ProductModel findByTitle(String title) {
 		System.out.println(title);
@@ -50,12 +51,14 @@ public class ProductController {
 	}
 
 	// Finds all products under the 20 item limit working
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/productbalance", produces = "application/json")
 	public List<ProductModel> findAllByMinLessThanBoh() {
 		return manager.findAllByMinLessThanBoh();
 	}
 
 	// finds all products by the manufacturer
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/manufacturer", consumes = "application/json", produces = "application/json")
 	public List<ProductModel> findAllByManufacturer(String manufacturer) {
 		System.out.println(manufacturer + "hi");
@@ -63,12 +66,14 @@ public class ProductController {
 	}
 
 	// Finds products by user_id working
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ProductModel getProduct(@PathVariable int id) {
 		return manager.findById(id);
 	}
 
 	// Updates product in database working
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "update/{id}", produces = "application/json")
 	public ProductModel upDateProduct(@PathVariable int id, @Valid @RequestBody ProductModel product)
 			throws ConfigDataResourceNotFoundException {
@@ -83,7 +88,8 @@ public class ProductController {
 	}
 
 	// Creates a product using URL for user_id and entered information working
-	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
 	public ProductModel create(@Valid @RequestBody ProductModel product) {
 		return manager.create(product);
 	}

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-create-invoice',
@@ -11,10 +12,12 @@ import { Router } from '@angular/router';
 })
 export class CreateInvoiceComponent implements OnInit {
 
-  invoices:any = [];
+  products : any = [];
+  displayedColumns: string[] = ['id', 'title', 'category', 'manufacturer', 'min', 'boh'];
+  dataSource :any;
 
   public postUrl = 'http://localhost:8080/productstock/create';
-  public getUrl = 'http://localhost:8080/productstock/invoices';
+  public getUrl = 'http://localhost:8080/products/all';
 
   constructor(private router:Router, private http:HttpClient) { }
 
@@ -27,7 +30,6 @@ export class CreateInvoiceComponent implements OnInit {
     const httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})}
 
-    console.log(invoiceForm)
 
     this.http.post(this.postUrl, JSON.stringify({
       productId:invoiceForm.value.productId, vendor:invoiceForm.value.vendor, 
@@ -36,7 +38,6 @@ export class CreateInvoiceComponent implements OnInit {
     }), httpOptions
     ).subscribe({
       next: (data) => {
-        console.log(data)
       }
     })
   }
@@ -51,12 +52,14 @@ export class CreateInvoiceComponent implements OnInit {
 
   fetch(){
     const httpOptions = {
-    headers: new HttpHeaders({
-     'Content-Type':  'application/json'})}
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
 
-    this.http.get(this.getUrl, httpOptions).subscribe(data=>{
-      this.invoices= data;
-      console.log(data)
+    this.http.get(this.getUrl, httpOptions).subscribe(data => {
+      this.products = data;
+      this.dataSource = new MatTableDataSource(this.products);
     })
    }
 
