@@ -17,4 +17,6 @@ public interface ProductManager {
 	ProductModel delete(ProductModel p);
 
 	ProductModel findByTitle(String title);
+
+	ProductModel tmp(int id);
 }

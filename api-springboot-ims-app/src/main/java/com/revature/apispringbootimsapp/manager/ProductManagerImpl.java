@@ -29,7 +29,7 @@ public class ProductManagerImpl implements ProductManager {
 	// Find single product with id of id
 	@Override	
 	public ProductModel findById(int id) {
-		return null;		
+		return dao.findById(id);		
 	}
 	
 	@Override
@@ -45,6 +45,11 @@ public class ProductManagerImpl implements ProductManager {
 	@Override
 	public ProductModel findByTitle(String title) {
 		return dao.findByTitle(title);
+	}
+
+	@Override
+	public ProductModel tmp(int id) {
+		return dao.findById(id);
 	}	
 
 }

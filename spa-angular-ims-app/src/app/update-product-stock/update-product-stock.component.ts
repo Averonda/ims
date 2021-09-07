@@ -10,6 +10,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class UpdateProductStockComponent implements OnInit {
 
   public url='http://localhost:8080/productstock/invoices';
+  
 
   invoices:any = [];
 

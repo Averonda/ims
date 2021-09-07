@@ -4,15 +4,67 @@
     </div>
 
     <div class="row">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Transaction Date</th>
+                <th>Vendor</th>
+                <th>Batch Code</th>
+                <th>Invoice Number</th>
+                <th>Quantity</th>
+                <th>Transaction Type</th>
+            </tr>
+            <tr>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.id}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.productId.title}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.transactionDate| date }}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.vendor}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.batchCode}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.invoiceNumber}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.quantity}}</div>
+                </td>
+                <td>
+                    <div *ngFor="let invoice of invoices ">{{invoice.transactionType}}</div>
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <button style="display: block;" class="formButton" (click)="refreshTable()">Refresh Table</button>
+    </div>
+    <div class="row">
         <form class="invoiceForm" (ngSubmit)="onSubmit(invoiceForm)" #invoiceForm="ngForm">
             <p>Product Id: <input name="productId" type="number" placeholder="0" ngModel></p>
             <p>Vendor: <input name="vendor" type="vendor" placeholder="Vendor" ngModel></p>
             <p>Batch Code: <input name="batchCode" type="text" placeholder="Batch Code" ngModel></p>
             <p>Invoice Number: <input name="invoiceNum" type="text" placeholder="Invoice Number" ngModel></p>
-            <p>Quantity: <input name="Quantity" type="number" placeholder="0" ngModel></p>
+            <p>Quantity: <input name="quantity" type="number" placeholder="0" ngModel></p>
             <p>Transaction Type: <select name="transactionType" ngModel><option >IN</option><option >OUT</option></select></p>
 
             <button class="formButton" type="submit">Submit</button>
         </form>
     </div>
+    <div class="row">
+        <button style="display: block;" class="formButton" (click)="home()">Home</button>
+    </div>
+
 </div>
+
+
+

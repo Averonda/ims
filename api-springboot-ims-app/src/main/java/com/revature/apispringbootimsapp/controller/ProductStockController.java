@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -49,12 +50,19 @@ public class ProductStockController {
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public ProductStockModel create(@Valid @RequestBody ProductStockModel p) {
 		ProductModel productModel = new ProductModel();
-		productModel = productManager.findByTitle(p.getProductId().getTitle());
-//		System.out.println(productModel.toString());
+		productModel = productManager.findById(p.getProductId().getId());
 		if(productModel == null) {
 			productModel = productManager.create(p.getProductId());
 			p.setProductId(productModel);
 		}
+
+		if(p.getTransactionType().equals("OUT")) {
+			int newQuantity = (-1 * p.getQuantity());
+			p.setQuantity(newQuantity);
+		}
+		int newBoh = productModel.getBoh() + p.getQuantity();
+		productModel.setBoh(newBoh);
+		
 		p.setProductId(productModel);
 		return productStockManager.create(p);
 		

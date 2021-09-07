@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { formatCurrency } from '@angular/common';
 
 @Component({
   selector: 'app-create-invoice',
@@ -12,11 +11,15 @@ import { formatCurrency } from '@angular/common';
 })
 export class CreateInvoiceComponent implements OnInit {
 
-  public url = 'http://localhost:8080/productstock/create';
+  invoices:any = [];
+
+  public postUrl = 'http://localhost:8080/productstock/create';
+  public getUrl = 'http://localhost:8080/productstock/invoices';
 
   constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.fetch()
   }
 
   onSubmit(invoiceForm:NgForm){
@@ -26,29 +29,35 @@ export class CreateInvoiceComponent implements OnInit {
 
     console.log(invoiceForm)
 
-    this.http.post(this.url, JSON.stringify({
-      product_id:invoiceForm.value.productId, vendor:invoiceForm.value.vendor, 
-      batch_code:invoiceForm.value.batchCode, invoice_number:invoiceForm.value.invoiceNum, 
-      quantity:invoiceForm.value.quantity, transaction_type:invoiceForm.value.transactionType
+    this.http.post(this.postUrl, JSON.stringify({
+      productId:invoiceForm.value.productId, vendor:invoiceForm.value.vendor, 
+      batchCode:invoiceForm.value.batchCode, invoiceNumber:invoiceForm.value.invoiceNum, 
+      quantity:invoiceForm.value.quantity, transactionType:invoiceForm.value.transactionType
     }), httpOptions
     ).subscribe({
       next: (data) => {
         console.log(data)
       }
     })
-
-    this.router.navigate([""])
-
-    // this.http.post(this.url, JSON.stringify({
-    //   product_id:invoiceForm.value.productId, vendor:invoiceForm.value.vendor, 
-    //   batch_code:invoiceForm.value.batchCode, invoice_number:invoiceForm.value.invoiceNum,
-    //   quantity:invoiceForm.value.quantity, transaction_type:invoiceForm.value.transactionType
-    // }), httpOptions).subscribe({
-    //   next:(data:any)=>{
-    //     console.log(data)
-    //   }
-    // })
-
   }
+
+  refreshTable(){
+    this.fetch();
+  }
+
+  home(){
+    this.router.navigate(['']);
+  }
+
+  fetch(){
+    const httpOptions = {
+    headers: new HttpHeaders({
+     'Content-Type':  'application/json'})}
+
+    this.http.get(this.getUrl, httpOptions).subscribe(data=>{
+      this.invoices= data;
+      console.log(data)
+    })
+   }
 
 }

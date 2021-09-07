@@ -12,8 +12,10 @@ import com.revature.apispringbootimsapp.model.ProductModel;
 public interface ProductDAO extends JpaRepository<ProductModel, Integer> {
 	
 	public List<ProductModel> findAll();
+	
+	public ProductModel findById(int id);
 
 	@Query(value = "select p from ProductModel p where p.title = :title")
 	public ProductModel findByTitle(@Param("title") String title);
-	
+
 }

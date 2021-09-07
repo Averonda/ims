@@ -1,8 +1,26 @@
+table, th{
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background-color: white;
+    text-align: right;
+}
+tr{
+    border: 1px solid black;
+}
+
+th{
+    background-color: rgb(196, 196, 196);
+}
+
 .invoiceForm{
     border: 1px solid  gray;
     background-color: white;
     padding: 5px;
-    margin: 200px;
+    margin: 50px;
     width: 400px;
     display: block;
     margin-left: auto;

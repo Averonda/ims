@@ -28,7 +28,7 @@ public class ProductModel {
 	private String title;
 	@Column
 	private String category;
-	@Column
+	@Column 
 	private String manufacturer;
 	@Column (name = "minumum_limit")
 	private int min;
@@ -40,6 +40,11 @@ public class ProductModel {
 	public void addProductStock(ProductStockModel productStockModel) {
 		productStockModel.setProductId(this);
 		productStocks.add(productStockModel);
+	}
+
+	public ProductModel(int id) {
+		super();
+		this.id = id;
 	}
 
 	public ProductModel() {
