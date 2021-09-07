@@ -17,13 +17,8 @@ export class CreateNewProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   onSubmit(form:NgForm) { 
-    console.log(form.value.title);
-    console.log(form.value.category);
-    console.log(form.value.manufacturer);
-    console.log(form.value.minimum_limit);
-    console.log(form.value.boh);
    
     const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
 
@@ -31,9 +26,10 @@ export class CreateNewProductComponent implements OnInit {
     ).subscribe({next:(data:any)=>{console.log(data)
     }
     })
-    this.router.navigate([''])  //TODO: update with location to this page again
 
-    //TODO: "Message: Product Successfully Added"
+    alert("Product Added Successfully")
+
+    this.router.navigate([''])
 
 }
 
