@@ -16,11 +16,11 @@ export class RestockproductComponent implements OnInit {
    products:any = [];
 
   status:any;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, ) { }
 
   ngOnInit(): void {
      this.fetch();
-     this.getStatus();
+     
   }
  
  
@@ -28,7 +28,7 @@ export class RestockproductComponent implements OnInit {
     fetch(){
       this.http.get(this.url).subscribe(data=>{
         this.products= data;
-        console.log(data)
+        
        
       })
 
@@ -44,11 +44,11 @@ getStatus(){
 }
 
    
-  order(data:any){
+  order(_data:any){
 
   }
 
-  downloadFile(data:any){
+  downloadFile(_data:any){
 
 }
 
