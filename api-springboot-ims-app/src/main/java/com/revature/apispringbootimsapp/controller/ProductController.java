@@ -36,6 +36,7 @@ public class ProductController {
 	private ProductManager manager;
 
 	// Finds all entries in db
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/all", produces = "application/json")
 	public List<ProductModel> getAllProducts() {
 		return manager.findAll();
