@@ -8,10 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import com.revature.apispringbootimsapp.model.ProductModel;
 
-// Passing ProductModel and primary key data-type
+// Passes ProductModel and primary key data-type
 public interface ProductDAO extends JpaRepository<ProductModel, Integer> {
 	
-	public List<ProductModel> findAll();
+	public List<ProductModel> findAll();	
+	
+	@Query(value = "select p from ProductModel p where p.title = :title")
+	public ProductModel findByTitle(@Param("title") String title);
+	
 	
 	public ProductModel findById(int id);
 

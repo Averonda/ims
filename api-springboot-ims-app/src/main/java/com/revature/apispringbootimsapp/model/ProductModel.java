@@ -10,11 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-
-import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "product")
@@ -30,13 +28,13 @@ public class ProductModel {
 	private String category;
 	@Column 
 	private String manufacturer;
-	@Column (name = "minumum_limit")
+	@Column (name = "minimum_limit")
 	private int min;
 	@Column
 	private int boh;
 	@OneToMany (mappedBy = "productId", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<ProductStockModel> productStocks = new HashSet<>();
-	
+	 
 	public void addProductStock(ProductStockModel productStockModel) {
 		productStockModel.setProductId(this);
 		productStocks.add(productStockModel);
@@ -79,43 +77,51 @@ public class ProductModel {
 		this.title = title;
 	}
 
+
 	public String getCategory() {
 		return category;
 	}
+
 
 	public void setCategory(String category) {
 		this.category = category;
 	}
 
+
 	public String getManufacturer() {
 		return manufacturer;
 	}
+
 
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
+
 	public int getMin() {
 		return min;
 	}
+
 
 	public void setMin(int min) {
 		this.min = min;
 	}
 
+
 	public int getBoh() {
 		return boh;
 	}
 
+
 	public void setBoh(int boh) {
 		this.boh = boh;
 	}
+
 
 	@Override
 	public String toString() {
 		return "ProductModel [id=" + id + ", title=" + title + ", category=" + category + ", manufacturer="
 				+ manufacturer + ", min=" + min + ", boh=" + boh + ", productStocks=" + productStocks + "]";
 	}
-
 	
 }

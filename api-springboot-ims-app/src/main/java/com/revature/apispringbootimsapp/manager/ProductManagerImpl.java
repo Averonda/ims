@@ -3,8 +3,12 @@ package com.revature.apispringbootimsapp.manager;
 import java.util.List;
 import javax.transaction.Transactional;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+
 import com.revature.apispringbootimsapp.dao.ProductDAO;
 import com.revature.apispringbootimsapp.model.ProductModel;
 
@@ -18,20 +22,19 @@ public class ProductManagerImpl implements ProductManager {
 	@Autowired
 	private ProductDAO dao;
 	
-	// Find all products in db
+	// Finds all products
 	@Override
-	//@Transactional(readOnly = true, propagation = Propagation.NEVER)
 	public List<ProductModel> findAll() {
-		//return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
 		return dao.findAll();
 	}
 	
 	// Find single product with id of id
-	@Override	
+	@Override
 	public ProductModel findById(int id) {
 		return dao.findById(id);		
 	}
 	
+	// Add/create new product
 	@Override
 	public ProductModel create(ProductModel product) {
 		return dao.save(product);
@@ -41,7 +44,6 @@ public class ProductManagerImpl implements ProductManager {
 	public ProductModel delete(ProductModel user) {
 		return null;
 	}
-
 	@Override
 	public ProductModel findByTitle(String title) {
 		return dao.findByTitle(title);

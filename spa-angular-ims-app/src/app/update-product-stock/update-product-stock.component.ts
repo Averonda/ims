@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   templateUrl: './update-product-stock.component.html',
   styleUrls: ['./update-product-stock.component.css']
 })
+
 export class UpdateProductStockComponent implements OnInit {
 
   public url='http://localhost:8080/productstock/invoices';

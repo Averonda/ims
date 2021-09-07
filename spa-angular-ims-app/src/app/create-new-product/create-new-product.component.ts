@@ -11,32 +11,25 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class CreateNewProductComponent implements OnInit {
 
-  public _url = 'http://localhost:8080/products';
+  public url = 'http://localhost:8080/products/add';
 
-  constructor(private router:Router,private http:HttpClient) { }
+  constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
   }
-
-  onSubmit(newProductForm:NgForm) { 
+  
+  onSubmit(form:NgForm) { 
    
-    const httpOptions = {
-headers: new HttpHeaders({
-'Content-Type':  'application/json'})}
+    const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
 
-this.http.post(this._url,JSON.stringify({
-title:newProductForm.value.title,
-category:newProductForm.value.category,
-manufacturer:newProductForm.value.manufacturer,
-minimum_limit:newProductForm.value.minimum_limit,
-boh:newProductForm.value.boh}),httpOptions
-).subscribe({
- next:(data:any)=>{
-   console.log(data)
- }
+    this.http.post(this.url, JSON.stringify({title:form.value.title,category:form.value.category,manufacturer:form.value.manufacturer, min:form.value.minimum_limit, boh:form.value.boh}), httpOptions
+    ).subscribe({next:(data:any)=>{console.log(data)
+    }
+    })
 
-})
-this.router.navigate([''])  //TODO: update with location
+    alert("Product Added Successfully")
+
+    this.router.navigate([''])
 
 }
 
