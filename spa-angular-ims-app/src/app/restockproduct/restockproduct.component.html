@@ -1,0 +1,43 @@
+<div class="row">
+    <table>
+        <tr>
+            
+            <th>Product ID</th>
+            <th>Product Title</th>
+            <th>Category</th>
+            <th>Manufacturer</th>
+            <th>Minumum Limit</th>
+            <th>Balance On Hand</th>
+            
+        </tr>
+        <tr>
+            <td>
+                <div *ngFor="let p of products">{{ p.id }}</div>
+            </td>
+            <td>
+                <div *ngFor="let p of products">{{p.title}}</div>
+            </td>
+            <td>
+                <div *ngFor="let p of products">{{p.category}}</div>
+            </td>
+            <td>
+                <div *ngFor="let p of products">{{p.manufacturer}}</div>
+            </td>
+            <td>
+                <div *ngFor="let p of products">{{p.min}}</div>
+            </td>
+            <td>
+                <div *ngFor="let p of products">{{p.boh}}</div>
+            </td>
+            
+        </tr>
+    </table>
+
+
+   <h2> Order New Stock</h2>
+   <button class="order" type="submit">Place New Order</button>
+   <button class="downloadFile" type="submit">Download CSV files</button>
+</div>
+
+
+

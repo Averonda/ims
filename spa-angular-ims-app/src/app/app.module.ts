@@ -10,12 +10,14 @@ import { CreateNewProductComponent } from './create-new-product/create-new-produ
 import { HomeComponent } from './home/home.component';
 import { UpdateProductStockComponent } from './update-product-stock/update-product-stock.component';
 import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
+import { RestockproductComponent } from './restockproduct/restockproduct.component';
 
 const routes:Routes = [
   {path:"createNewProduct", component:CreateNewProductComponent },
   {path: '', component: HomeComponent},
   {path: 'updateproductstock', component: UpdateProductStockComponent},
-  {path: 'createinvoice', component: CreateInvoiceComponent}
+  {path: 'createinvoice', component: CreateInvoiceComponent},
+  {path: 'restockProduct', component: RestockproductComponent}
 ]
 
 @NgModule({
@@ -24,7 +26,8 @@ const routes:Routes = [
     CreateNewProductComponent, 
     HomeComponent,
     UpdateProductStockComponent,
-    CreateInvoiceComponent 
+    CreateInvoiceComponent,
+    RestockproductComponent 
 
   ],
   imports: [

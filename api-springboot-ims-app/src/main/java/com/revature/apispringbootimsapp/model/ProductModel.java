@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import javax.persistence.OneToMany;
 
+
+
 @Entity
 @Table(name = "product")
 public class ProductModel {
@@ -28,7 +30,7 @@ public class ProductModel {
 	private String title;
 	@Column
 	private String category;
-	@Column
+	@Column(name = "manufacturer")
 	private String manufacturer;
 	@Column (name = "minumum_limit")
 	private int min;
@@ -44,6 +46,11 @@ public class ProductModel {
 
 	public ProductModel() {
 		super();
+	}
+	
+	public ProductModel(String manufacturer) {
+		super();
+		this.manufacturer = manufacturer;
 	}
 	
 	public ProductModel(int id, String title, String category, String manufacturer, int min, int boh,
