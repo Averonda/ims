@@ -7,8 +7,8 @@ import java.util.HashMap;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
-import javax.validation.Valid;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -32,6 +32,10 @@ import com.revature.apispringbootimsapp.model.ProductModel;
 @RequestMapping(path = "/products")
 public class ProductController {
 
+	
+	private static final Logger log = LoggerFactory.getLogger(ProductController.class);
+
+	
 	@Autowired
 	private ProductManager manager;
 
@@ -39,14 +43,15 @@ public class ProductController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/all", produces = "application/json")
 	public List<ProductModel> getAllProducts() {
+		log.info("ProductController.findAll called");
 		return manager.findAll();
 	}
 
-	//
+	// Finds product by title
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/title", consumes = "application/json", produces = "application/json")
 	public ProductModel findByTitle(String title) {
-		System.out.println(title);
+		log.info("ProductController.findByTitle called: "+title);		
 		return manager.findByTitle(title);
 	}
 
@@ -54,6 +59,7 @@ public class ProductController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/productbalance", produces = "application/json")
 	public List<ProductModel> findAllByMinLessThanBoh() {
+		log.info("ProductController.findAllByMinLessThanBOH called");
 		return manager.findAllByMinLessThanBoh();
 	}
 
@@ -61,7 +67,7 @@ public class ProductController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/manufacturer", consumes = "application/json", produces = "application/json")
 	public List<ProductModel> findAllByManufacturer(String manufacturer) {
-		System.out.println(manufacturer + "hi");
+		log.info("ProductController.findAllByManufacturer called");
 		return manager.findAllByManufacturer(manufacturer);
 	}
 
@@ -69,6 +75,7 @@ public class ProductController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ProductModel getProduct(@PathVariable int id) {
+		log.info("ProductController.findByID called: " + id);
 		return manager.findById(id);
 	}
 
@@ -84,6 +91,7 @@ public class ProductController {
 		product1.setMin(product.getMin());
 		product1.setBoh(product.getBoh());
 		final ProductModel upDatedProduct = manager.create(product1);
+		log.info("ProductController.updateProduct called: "+product1.toString());
 		return upDatedProduct;
 	}
 
@@ -91,6 +99,7 @@ public class ProductController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
 	public ProductModel create(@Valid @RequestBody ProductModel product) {
+		log.info("ProductController.create called: "+product.toString());
 		return manager.create(product);
 	}
 

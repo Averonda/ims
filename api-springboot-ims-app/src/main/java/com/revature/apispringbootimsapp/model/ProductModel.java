@@ -15,10 +15,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
-import javax.persistence.OneToMany;
-
-
-
 @Entity
 @Table(name = "product")
 public class ProductModel {

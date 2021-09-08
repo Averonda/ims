@@ -40,12 +40,15 @@ public class ProductStockController {
 	@Autowired
 	private ProductManager productManager;
 	
+	
+	// Returns all invoices
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path="/invoices", produces = "application/json", consumes = "application/json")
 	public List<ProductStockModel> getAllInvoices(){
 		return productStockManager.findAll();
 	}
 	
+	// Persists new invoice(ProductStockModel) to database and updates BOH for parent ProductModel
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
 	public ProductStockModel create(@Valid @RequestBody ProductStockModel p) {
